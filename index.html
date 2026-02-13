@@ -16,54 +16,7 @@ body{
   overflow:hidden;
 }
 
-/* 💊 PILL BUTTON CONTAINER */
-.pill{
-  margin:24px auto 0;
-  display:flex;
-  width:280px;
-  background:#a44a5d;
-  border-radius:40px;
-  overflow:hidden;
-  position:relative;
-}
-
-/* Buttons inside pill */
-.pill-btn{
-  flex:1;
-  height:56px;
-  border:none;
-  background:transparent;
-  color:white;
-  font-size:18px;
-  font-weight:700;
-  cursor:pointer;
-  font-family:'Playfair Display',serif;
-}
-
-/* YES emphasis */
-.pill-btn.yes{
-  background:rgba(255,255,255,0.15);
-}
-
-/* NO button (for escape) */
-.pill-btn.no{
-  position:relative;
-}
-
-/* Emoji visibility fix */
-.pill-btn span,
-.pill-btn{
-  line-height:1;
-}
-
-/* Taunt text */
-#taunt{
-  margin-top:18px;
-  font-weight:600;
-  color:#6e1f2c;
-}
-
-/* Pages */
+/* PAGES */
 .page{
   position:absolute;inset:0;
   display:flex;justify-content:center;align-items:center;
@@ -73,7 +26,7 @@ body{
 }
 .page.active{opacity:1;pointer-events:auto}
 
-/* Envelope */
+/* ENVELOPE */
 .envelope{
   width:90vw;max-width:420px;aspect-ratio:3/2;
   background:linear-gradient(145deg,#4a0f1f,#7b1e34);
@@ -89,13 +42,17 @@ body{
 }
 .envelope.open .flap{transform:rotateX(160deg)}
 .envelopeText{
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
+  position:absolute;
+  top:42%;left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
   font-family:'Great Vibes',cursive;
-  font-size:36px;color:#fff;
+  font-size:34px;color:#fff;
+  line-height:1.2;width:100%;
+  padding:0 16px;
 }
 
-/* Letter */
+/* LETTER */
 .letter{
   background:#f7e6c4;
   padding:28px;border-radius:24px;
@@ -103,11 +60,17 @@ body{
   text-align:center;
 }
 .letter h1{font-family:'Great Vibes';font-size:44px}
+
+/* BUTTON AREA – GLOBAL CENTER FIX */
 .buttons-area{
-  margin-top:24px;height:90px;
+  margin-top:24px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   position:relative;
 }
 
+/* NORMAL BUTTON */
 .btn{
   min-height:56px;
   padding:10px 16px;
@@ -124,21 +87,9 @@ body{
   line-height:1.3;
   text-align:center;
 }
+.btn p{margin:2px 0}
 
-.btn p{
-  margin:2px 0;
-}
-
-.heartbeat{animation:beat 1.6s infinite}
-@keyframes beat{50%{transform:scale(1.1)}}
-
-#noBtn{
-  position:absolute;right:0;
-  transition:all .3s ease;
-}
-
-#taunt{margin-top:16px;font-weight:600}
-
+/* VALENTINE BUTTONS */
 .choice-buttons{
   display:flex;
   justify-content:center;
@@ -146,7 +97,6 @@ body{
   margin-top:24px;
   position:relative;
 }
-
 .choice-btn{
   min-width:130px;
   height:52px;
@@ -160,23 +110,19 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  line-height:1;
-  transition:transform .2s ease;
+}
+.choice-btn.no{position:absolute}
+
+/* TAUNT */
+#taunt{
+  margin-top:18px;
+  font-weight:600;
+  color:#6e1f2c;
+  text-align:center;
+  min-height:24px;
 }
 
-.choice-btn:active{
-  transform:scale(0.95);
-}
-
-.choice-btn.yes{
-  background:#a44a5d;
-}
-
-.choice-btn.no{
-  position:absolute;
-}
-
-/* YES explosion hearts */
+/* HEART EXPLOSION */
 .heart{
   position:fixed;
   font-size:24px;
@@ -190,7 +136,7 @@ body{
   }
 }
 
-/* Final */
+/* FINAL TEXT */
 .finalText{
   font-family:'Great Vibes';
   font-size:56px;color:#fff;text-align:center;
@@ -212,18 +158,18 @@ body{
 <div class="page active" id="envelopePage">
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap"></div>
-    <div class="envelopeText">
-	Tap gently...it's from my heart ❤️
-	</div>
-	</div>
+    <div class="envelopeText">Tap gently… it’s from my heart ❤️</div>
   </div>
+</div>
 
 <!-- PAGE 1 -->
 <div class="page" id="page1">
   <div class="letter">
     <h1>Heyyy Potti…</h1>
     <p>This is not just a love letter…<br>It's a pictorial representation of my Love for you 💕</p>
-    <button class="btn" onclick="nextPage('page2')">Click for more 🙈</button>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('page2')">Click for more 🙈</button>
+    </div>
   </div>
 </div>
 
@@ -232,37 +178,34 @@ body{
   <div class="letter">
     <h1>A harsh truth is</h1>
     <p>Nu 'kaadhu' anna kuda 'avunu' annatly untundhi 😛</p>
-    <button class="btn" onclick="nextPage('page3')">
-	<p>Anni oke slide lo enduku? </p>
-	<p>Next slide ki poi chudu mama...</p>
-	<p>Ni kosam oka song dedicate chestuna 🎶 </p> </button>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('page3')">
+        <p>Anni oke slide lo enduku?</p>
+        <p>Next slide ki poi chudu mama...</p>
+        <p>Ni kosam oka song dedicate chestuna 🎶</p>
+      </button>
+    </div>
   </div>
 </div>
 
 <!-- PAGE 3 -->
 <div class="page" id="page3">
   <div class="letter">
-    <p1>Netho unte chalu...gurthu ravu nimishalu...allukova manasantha...hai parimalalu 💞 </p1>
-    <button class="btn" onclick="nextPage('valentinePage')">Can i ask u Question 🫣</button>
+    <h1>Netho unte chalu...gurthu ravu nimishalu...allukova manasantha...hai parimalalu 💞</h1>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('valentinePage')">Can i ask u Question 🫣</button>
+    </div>
   </div>
 </div>
 
 <!-- VALENTINE -->
 <div class="page" id="valentinePage">
   <div class="letter">
-    <p style="font-size:22px">
-      Will you be my Valentine? 💍
-    </p>
-
-<div class="choice-buttons" id="valArea">
-  <button class="choice-btn yes" id="yesBtn" onclick="yesClicked()">
-    YES 💖
-  </button>
-  <button class="choice-btn no" id="noBtn" onclick="escapeNo()">
-    NO 😏
-  </button>
-</div>
-
+    <p style="font-size:22px">Will you be my Valentine? 💍</p>
+    <div class="choice-buttons" id="valArea">
+      <button class="choice-btn yes" id="yesBtn" onclick="yesClicked()">YES 💖</button>
+      <button class="choice-btn no" id="noBtn" onclick="escapeNo()">NO 😏</button>
+    </div>
     <div id="taunt"></div>
   </div>
 </div>
@@ -270,10 +213,12 @@ body{
 <!-- DESTINY -->
 <div class="page" id="destinyPage">
   <div class="finalText">
-   <p> Haha…😌💖
-    nu YES click chesthav ani naku telusu 😁 Vidipovali anukuna kani vidipoleni bandham ra manadhi ❤ </p>
-    <div class="buttons-area" style="justify-content:center;margin-top:40px">
+    Haha…😌💖<br>
+    <p>nu YES click chesthav ani naku telusu 😁</p>
+    <p>Vidipovali anukuna kani vidipoleni bandham ra manadhi ❤</p>
+    <div class="buttons-area">
       <button class="btn" onclick="showFinal()">Inkenduku late? Click chey...ekada ❤️</button>
+    </div>
   </div>
 </div>
 
@@ -297,12 +242,11 @@ function nextPage(id){showPage(id)}
 
 function escapeNo(){
   tries++;
-  no.style.left = Math.random() * 160 - 80 + 'px';
-no.style.top  = Math.random() * 40 + 'px';
-  const area = document.getElementById('valArea');
-const no = document.getElementById('noBtn');
-const yes = document.getElementById('yesBtn');
-const taunt = document.getElementById('taunt');
+  const area=document.getElementById('valArea');
+  const no=document.getElementById('noBtn');
+  const yes=document.getElementById('yesBtn');
+  const taunt=document.getElementById('taunt');
+  taunt.style.opacity=1;
 
   if(tries===1){yes.style.display='none';taunt.innerText="Nice try 😏";}
   else if(tries===2){taunt.innerText="Intha easy ga escape avvalevu…";}
@@ -310,18 +254,17 @@ const taunt = document.getElementById('taunt');
   else{
     taunt.innerText="No escape now… only us 💕";
     no.style.display='none';
-    yes.style.display='inline-block';
+    yes.style.display='flex';
     return;
   }
-  no.style.left=Math.random()*(area.clientWidth-no.offsetWidth)+'px';
-  no.style.top=Math.random()*40+'px';
+  no.style.left=(Math.random()*160-80)+'px';
+  no.style.top=(Math.random()*40)+'px';
 }
 
 function yesClicked(){
   for(let i=0;i<28;i++) createHeart();
   setTimeout(()=>showPage('destinyPage'),1200);
 }
-
 function createHeart(){
   const h=document.createElement('div');
   h.className='heart';
@@ -333,11 +276,10 @@ function createHeart(){
   document.body.appendChild(h);
   setTimeout(()=>h.remove(),1400);
 }
-
 function showFinal(){
   showPage('finalPage');
   const text="Happy Valentine’s Day baby ❤️ Always yours 🫂";
-  const box = document.getElementById('finalText');
+  const box=document.getElementById('finalText');
   box.innerHTML='';
   [...text].forEach((c,i)=>{
     const s=document.createElement('span');
