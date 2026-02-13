@@ -16,6 +16,53 @@ body{
   overflow:hidden;
 }
 
+/* 💊 PILL BUTTON CONTAINER */
+.pill{
+  margin:24px auto 0;
+  display:flex;
+  width:280px;
+  background:#a44a5d;
+  border-radius:40px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* Buttons inside pill */
+.pill-btn{
+  flex:1;
+  height:56px;
+  border:none;
+  background:transparent;
+  color:white;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  font-family:'Playfair Display',serif;
+}
+
+/* YES emphasis */
+.pill-btn.yes{
+  background:rgba(255,255,255,0.15);
+}
+
+/* NO button (for escape) */
+.pill-btn.no{
+  position:relative;
+}
+
+/* Emoji visibility fix */
+.pill-btn span,
+.pill-btn{
+  line-height:1;
+}
+
+/* Taunt text */
+#taunt{
+  margin-top:18px;
+  font-weight:600;
+  color:#6e1f2c;
+}
+
 /* Pages */
 .page{
   position:absolute;inset:0;
@@ -112,7 +159,9 @@ body{
 <div class="page active" id="envelopePage">
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap"></div>
+	<div class="buttons-area" style="justify-content:center;margin-top:40px">
     <div class="envelopeText">Tap gently...it's from my heart ❤️</div>
+	</div>
   </div>
 </div>
 
@@ -130,27 +179,37 @@ body{
   <div class="letter">
     <h1>A harsh truth is</h1>
     <p>Nu 'kaadhu' anna kuda 'avunu' annatly untundhi 😛</p>
-    <button class="btn" onclick="nextPage('page3')">Anni oke slide lo enduku? Next slide ki poi chudu mama...Ni kosam oka song dedicate chestuna 🎶</button>
+    <button class="btn" onclick="nextPage('page3')">
+	<p>Anni oke slide lo enduku? </p>
+	<p>Next slide ki poi chudu mama...</p>
+	<p>Ni kosam oka song dedicate chestuna 🎶 </p> </button>
   </div>
 </div>
 
 <!-- PAGE 3 -->
 <div class="page" id="page3">
   <div class="letter">
-    <p>Netho unte chalu...gurthu ravu nimishalu...allukova manasantha...hai parimalalu 💞</p>
-    <button class="btn" onclick="nextPage('valentinePage')">Can I ask you? 🫣</button>
+    <h1>Netho unte chalu...gurthu ravu nimishalu...allukova manasantha...hai parimalalu 💞 </h1>
+    <button class="btn" onclick="nextPage('valentinePage')">Can i ask u Question 🫣</button>
   </div>
 </div>
 
 <!-- VALENTINE -->
 <div class="page" id="valentinePage">
   <div class="letter">
-    <p>Will you be my Valentine? 💍</p>
-    <div class="buttons-area" id="valArea">
-	<div class="buttons-area" style="justify-content:center;margin-top:40px">
-      <button class="btn heartbeat" id="yesBtn" onclick="yesClicked()">YES 😍</button>
-      <button class="btn heartbeat" id="noBtn" onclick="escapeNo()">NO 😏</button>
+    <p style="font-size:22px">
+      Will you be my Valentine? 💍
+    </p>
+
+    <div class="pill" id="valArea">
+      <button class="pill-btn yes" id="yesBtn" onclick="yesClicked()">
+        YES 💖
+      </button>
+      <button class="pill-btn no" id="noBtn" onclick="escapeNo()">
+        NO 😏
+      </button>
     </div>
+
     <div id="taunt"></div>
   </div>
 </div>
@@ -186,7 +245,10 @@ function nextPage(id){showPage(id)}
 
 function escapeNo(){
   tries++;
-  const area=valArea,no=noBtn,yes=yesBtn,taunt=document.getElementById('taunt');
+  const area = document.getElementById('valArea');
+const no = document.getElementById('noBtn');
+const yes = document.getElementById('yesBtn');
+const taunt = document.getElementById('taunt');
 
   if(tries===1){yes.style.display='none';taunt.innerText="Nice try 😏";}
   else if(tries===2){taunt.innerText="Intha easy ga escape avvalevu…";}
@@ -221,7 +283,8 @@ function createHeart(){
 function showFinal(){
   showPage('finalPage');
   const text="Happy Valentine’s Day baby ❤️ Always yours 🫂";
-  const box=finalText;box.innerHTML='';
+  const box = document.getElementById('finalText');
+  box.innerHTML='';
   [...text].forEach((c,i)=>{
     const s=document.createElement('span');
     s.textContent=c;
