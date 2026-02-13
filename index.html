@@ -21,7 +21,7 @@ body{
   position:absolute;inset:0;
   display:flex;justify-content:center;align-items:center;
   opacity:0;pointer-events:none;
-  transition:opacity 5s ease;
+  transition:opacity 2s ease;
   padding:16px;
 }
 .page.active{opacity:1;pointer-events:auto}
@@ -38,7 +38,7 @@ body{
   background:#a33a52;
   clip-path:polygon(0 0,100% 0,96% 72%,50% 100%,4% 72%);
   transform-origin:top;
-  transition:transform 5s ease;
+  transition:transform 2s ease;
 }
 
 .envelope.open .flap{transform:rotateX(160deg)}
@@ -214,7 +214,8 @@ body{
 <!-- DESTINY -->
 <div class="page" id="destinyPage">
   <div class="finalText">
-    <p style="font-size:28px"> Haha…😌💖
+  
+  <p style="font-size:28px"> Haha…😌💖
     Nu "Yes" Chepthav Ani Naku Telusu baby 😁
     Vidipovali Anukuna Vidaleni Bandham ra manadhi ❤</p>
     <div class="buttons-area">
@@ -233,7 +234,7 @@ let tries = 0;
 
 function openEnvelope(){
   document.querySelector('.envelope').classList.add('open');
-  setTimeout(()=>showPage('page1'),1400);
+  setTimeout(()=>showPage('page1'),1200);
 }
 
 function showPage(id){
@@ -257,7 +258,7 @@ function escapeNo(){
   tries++;
 
   if(tries===1) taunt.innerText="Nice Try 😏";
-  else if(tries===2) taunt.innerText="Chusava HTML Java Code ki kuda Nu Yes Chepali Ane Anukuntundhi…🤪";
+  else if(tries===2) taunt.innerText="See Code ki kuda Nu Yes Chepali Ane Anukuntundhi…🤪";
   else if(tries===3) taunt.innerText="Entha Easy Ga Escape Avvalevu Na Nunchi..🥵";
   else{
     taunt.innerText="No Escape Now… You’re Already Mine & Only US 💕";
@@ -272,7 +273,7 @@ function escapeNo(){
 
 function yesClicked(){
   for(let i=0;i<28;i++) createHeart();
-  setTimeout(()=>showPage('destinyPage'),1400);
+  setTimeout(()=>showPage('destinyPage'),1200);
 }
 
 function createHeart(){
@@ -289,7 +290,7 @@ function createHeart(){
 
 function showFinal(){
   showPage('finalPage');
-  const text="Happy Valentine’s Day Baby ❤️ I Love You & I'm Always there for You 🫂";
+  const text="Happy Valentine’s Day Baby ❤️ I Love You and I'm Always there for You 🫂";
   finalText.innerHTML='';
   [...text].forEach((c,i)=>{
     const s=document.createElement('span');
@@ -302,8 +303,3 @@ function showFinal(){
 
 </body>
 </html>
-
-
-
-
-
