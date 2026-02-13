@@ -43,16 +43,14 @@ body{
 .envelope.open .flap{transform:rotateX(160deg)}
 .envelopeText{
   position:absolute;
-  top:42%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  text-align:center;
-  font-family:'Great Vibes',cursive;
-  font-size:34px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding-top:28px;
+  font-family:'Great Vibes', cursive;
+  font-size:30px;
   color:#fff;
-  line-height:1.2;
-  width:100%;
-  pointer-events:none;
+  text-align:center;
 }
 
 /* Letter */
@@ -155,7 +153,7 @@ body{
 <div class="page active" id="envelopePage">
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap"></div>
-    <div class="envelopeText">Tap gently… it’s from my heart ❤️</div>
+    <div class="envelopeText"> <p style="font-size:10px"> Tap gently… it’s from my heart ❤️ </p> </div>
   </div>
 </div>
 
@@ -174,7 +172,7 @@ body{
 <div class="page" id="page2">
   <div class="letter">
     <h1>A harsh truth is</h1>
-    <p>Nu 'kaadhu' anna kuda 'avunu' annatly untundhi 😛</p>
+    <p style="font-size:22px"> Nu 'kaadhu' anna kuda 'avunu' annatly untundhi 😛</p>
     <div class="buttons-area">
       <button class="btn" onclick="nextPage('page3')">
         Anni oke slide lo enduku?<br>
@@ -188,7 +186,7 @@ body{
 <!-- PAGE 3 -->
 <div class="page" id="page3">
   <div class="letter">
-    <p>Netho unte chalu... gurthu ravu nimishalu... allukova manasantha... hai parimalalu 💞</p>
+    <p style="font-size:22px"> Netho unte chalu... gurthu ravu nimishalu... allukova manasantha... hai parimalalu 💞</p>
     <div class="buttons-area">
       <button class="btn" onclick="nextPage('valentinePage')">Can I ask u a question 🫣</button>
     </div>
@@ -212,11 +210,11 @@ body{
 <!-- DESTINY -->
 <div class="page" id="destinyPage">
   <div class="finalText">
-    Haha…😌💖<br>
-    <p>nu YES click chesthav ani naku telusu 😁</p>
-    <p>Vidipovali anukuna kani vidipoleni bandham ra manadhi ❤</p>
+    <p style="font-size:10px"> Haha…😌💖
+    nu YES click chesthav ani naku telusu 😁
+    Vidipovali anukuna kani vidipoleni bandham ra manadhi ❤</p>
     <div class="buttons-area">
-      <button class="btn" onclick="showFinal()">Inkenduku late? Click chey... ekada ❤️</button>
+      <button class="btn" onclick="showFinal()">Inkenduku late? Click chey...ekada ❤️</button>
     </div>
   </div>
 </div>
@@ -255,7 +253,7 @@ function escapeNo(){
   tries++;
 
   if(tries===1) taunt.innerText="Nice try 😏";
-  else if(tries===2) taunt.innerText="Intha easy ga escape avvalevu…";
+  else if(tries===2) taunt.innerText="Intha easy ga escape avvalevu…🤪";
   else if(tries===3) taunt.innerText="Because you’re already mine ❤️";
   else{
     taunt.innerText="No escape now… only us 💕";
@@ -287,7 +285,7 @@ function createHeart(){
 
 function showFinal(){
   showPage('finalPage');
-  const text="Happy Valentine’s Day baby ❤️ Always yours 🫂";
+  const text="Happy Valentine’s Day Baby ❤️ Always yours 🫂";
   finalText.innerHTML='';
   [...text].forEach((c,i)=>{
     const s=document.createElement('span');
