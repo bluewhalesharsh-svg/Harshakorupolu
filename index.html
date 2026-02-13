@@ -21,7 +21,7 @@ body{
   position:absolute;inset:0;
   display:flex;justify-content:center;align-items:center;
   opacity:0;pointer-events:none;
-  transition:opacity 1s ease;
+  transition:opacity 5s ease;
   padding:16px;
 }
 .page.active{opacity:1;pointer-events:auto}
@@ -38,7 +38,7 @@ body{
   background:#a33a52;
   clip-path:polygon(0 0,100% 0,96% 72%,50% 100%,4% 72%);
   transform-origin:top;
-  transition:transform 1.2s ease;
+  transition:transform 5s ease;
 }
 
 .envelope.open .flap{transform:rotateX(160deg)}
@@ -233,7 +233,7 @@ let tries = 0;
 
 function openEnvelope(){
   document.querySelector('.envelope').classList.add('open');
-  setTimeout(()=>showPage('page1'),1200);
+  setTimeout(()=>showPage('page1'),1400);
 }
 
 function showPage(id){
@@ -272,7 +272,7 @@ function escapeNo(){
 
 function yesClicked(){
   for(let i=0;i<28;i++) createHeart();
-  setTimeout(()=>showPage('destinyPage'),1200);
+  setTimeout(()=>showPage('destinyPage'),1400);
 }
 
 function createHeart(){
@@ -289,7 +289,7 @@ function createHeart(){
 
 function showFinal(){
   showPage('finalPage');
-  const text="Happy Valentine’s Day Baby ❤️ I Love You and I'm Always there for You 🫂";
+  const text="Happy Valentine’s Day Baby ❤️ I Love You & I'm Always there for You 🫂";
   finalText.innerHTML='';
   [...text].forEach((c,i)=>{
     const s=document.createElement('span');
@@ -302,6 +302,7 @@ function showFinal(){
 
 </body>
 </html>
+
 
 
 
