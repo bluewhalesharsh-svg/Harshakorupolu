@@ -40,9 +40,10 @@ body{
   transform-origin:top;
   transition:transform 1.2s ease;
 }
+
 .envelope.open .flap{transform:rotateX(160deg)}
 
-  .envelopeText{
+.envelopeText{
   position:absolute;
   inset:0;
   display:flex;
@@ -53,8 +54,8 @@ body{
   font-size:28px;
   color:#fff;
   text-align:center;
-    width:100%;
-    margin:0 auto;
+  width:100%;
+  margin:0 auto;
 }
 
 /* Letter */
@@ -165,9 +166,9 @@ body{
 <div class="page" id="page1">
   <div class="letter">
     <h1>Heyyy Potti…</h1>
-    <p>This is not just a love letter…<br>It's a pictorial representation of my Love for you 💕</p>
+    <p>This is not just a love letter…💌<br>It's My Heart Compiled Into Code...Just For You 🧑🏻‍💻💕</p>
     <div class="buttons-area">
-      <button class="btn" onclick="nextPage('page2')">Click for more 🙈</button>
+      <button class="btn" onclick="nextPage('page2')">Padha Mawa Next Page Ki Podham 🙈</button>
     </div>
   </div>
 </div>
@@ -175,13 +176,12 @@ body{
 <!-- PAGE 2 -->
 <div class="page" id="page2">
   <div class="letter">
-    <h1>A harsh truth is</h1>
-    <p style="font-size:22px"> Nu 'kaadhu' anna kuda 'avunu' annatly untundhi 😛</p>
+    <h1>Neku Oka Harsh Truth Chepana...</h1>
+    <p style="font-size:22px"> Manaku oo Ante Godava aa Ante Godavalu Ituntai, Kani Okariki Okariki Chachentha Istam 🤧🥰</p>
     <div class="buttons-area">
       <button class="btn" onclick="nextPage('page3')">
-        Anni oke slide lo enduku?<br>
-        Next slide ki poi chudu mama…<br>
-        Ni kosam oka song dedicate chestuna 🎶
+        Next Slide Ki Poi Chudu Mawa…<br>
+        Ni Kosam Na Fav Song Dedicate Chestuna Neku 🎶
       </button>
     </div>
   </div>
@@ -190,9 +190,9 @@ body{
 <!-- PAGE 3 -->
 <div class="page" id="page3">
   <div class="letter">
-    <p style="font-size:22px"> Netho unte chalu... gurthu ravu nimishalu... allukova manasantha... hai parimalalu 💞</p>
+    <p style="font-size:22px"> Emetti Penchare Amma Nanna Ninnu...Nannu Etla Champutunav Nenu Ayya Fanuu...Avi Pedhala...Rasagulala...Adhi Nadumaa...Icecream ah... 😜💞</p>
     <div class="buttons-area">
-      <button class="btn" onclick="nextPage('valentinePage')">Can I ask u a question 🫣</button>
+      <button class="btn" onclick="nextPage('valentinePage')">Ok Jokes Apart...Can I ask u a question 🫣</button>
     </div>
   </div>
 </div>
@@ -214,11 +214,11 @@ body{
 <!-- DESTINY -->
 <div class="page" id="destinyPage">
   <div class="finalText">
-    <p style="font-size:30px"> Haha…😌💖
-    nu YES click chesthav ani naku telusu 😁
-    Vidipovali anukuna kani vidipoleni bandham ra manadhi ❤</p>
+    <p style="font-size:28px"> Haha…😌💖
+    Nu "Yes" Click Chesthav Ani Naku Telusu baby 😁
+    Vidipovali Anukuna Vidaleni Bandham ra manadhi ❤</p>
     <div class="buttons-area">
-      <button class="btn" onclick="showFinal()">Inkenduku late? Click chey...ekada ❤️</button>
+      <button class="btn" onclick="showFinal()">Enni Click Chesav...<br> Last Edhi Okati Click Chai Inka ❤️</button>
     </div>
   </div>
 </div>
@@ -256,11 +256,11 @@ function resetValentine(){
 function escapeNo(){
   tries++;
 
-  if(tries===1) taunt.innerText="Nice try 😏";
-  else if(tries===2) taunt.innerText="Intha easy ga escape avvalevu…🤪";
-  else if(tries===3) taunt.innerText="Because you’re already mine ❤️";
+  if(tries===1) taunt.innerText="Nice Try 😏";
+  else if(tries===2) taunt.innerText="See Code ki kuda Nu Yes Chepali Ane Anukuntundhi…🤪";
+  else if(tries===3) taunt.innerText="Entha Easy Ga Escape Avvalevu Na Nunchi..🥵";
   else{
-    taunt.innerText="No escape now… only us 💕";
+    taunt.innerText="No Escape Now… You’re Already Mine & Only US 💕";
     noBtn.style.display='none';
     yesBtn.style.display='flex';
     return;
@@ -289,7 +289,7 @@ function createHeart(){
 
 function showFinal(){
   showPage('finalPage');
-  const text="Happy Valentine’s Day Baby ❤️ Always yours 🫂";
+  const text="Happy Valentine’s Day Baby ❤️ I Love You & I'm Always There For You 🫂";
   finalText.innerHTML='';
   [...text].forEach((c,i)=>{
     const s=document.createElement('span');
@@ -302,10 +302,3 @@ function showFinal(){
 
 </body>
 </html>
-
-
-
-
-
-
-
