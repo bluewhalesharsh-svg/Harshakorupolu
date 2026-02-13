@@ -41,16 +41,20 @@ body{
   transition:transform 1.2s ease;
 }
 .envelope.open .flap{transform:rotateX(160deg)}
-.envelopeText{
+
+  .envelopeText{
   position:absolute;
+  inset:0;
   display:flex;
   align-items:flex-start;
   justify-content:center;
   padding-top:100px;
   font-family:'Great Vibes', cursive;
-  font-size:30px;
+  font-size:100px;
   color:#fff;
   text-align:center;
+    width:100%;
+    margin:0 auto;
 }
 
 /* Letter */
@@ -298,4 +302,5 @@ function showFinal(){
 
 </body>
 </html>
+
 
