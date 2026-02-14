@@ -158,7 +158,7 @@ body{
 <div class="page active" id="envelopePage">
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap"></div>
-    <div class="envelopeText"> Tap Gently… <br> It’s From My Heart ❤️ </div>
+    <div class="envelopeText"> Tap Gently… <br> It's From My Heart ❤️ </div>
   </div>
 </div>
 
@@ -259,7 +259,7 @@ function escapeNo(){
   else if(tries===2) taunt.innerText="Chudu Java Code ki kuda Nu No Chepatam Istam Ledhu 🤪";
   else if(tries===3) taunt.innerText="Antha Easy Ga Escape Avvalevu Na Nunchi..🥵";
   else{
-    taunt.innerText="No Escape Now…You’re Already Mine 💕";
+    taunt.innerText="No Escape Now…You're Already Mine 💕";
     noBtn.style.display='none';
     yesBtn.style.display='flex';
     return;
@@ -280,20 +280,27 @@ function createHeart(){
   h.innerText='❤️';
   h.style.left='50%';
   h.style.top='50%';
-  h.style.setProperty('--x',(Math.random()*400-200)+'px');
-  h.style.setProperty('--y',(Math.random()*400-200)+'px');
+  h.style.fontSize = (20 + Math.random() * 20) + 'px';
+  h.style.setProperty('--x',(Math.random()*600-300)+'px');
+  h.style.setProperty('--y',(Math.random()*600-300)+'px');
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),1400);
+  setTimeout(()=>h.remove(),2000);
 }
 
 function showFinal(){
   showPage('finalPage');
-  const text="Happy Valentine’s Day Baby ❤️ I Love You & I'm Always there for You 🫂";
+  
+  // 🔥 HEARTS EXPLOSION ON FINAL PAGE OPEN 🔥
+  for(let i = 0; i < 35; i++) {
+    setTimeout(() => createHeart(), i * 50);
+  }
+  
+  const text="Happy Valentine's Day Baby ❤️ I Love You & I'm Always there for You 🫂";
   finalText.innerHTML='';
   [...text].forEach((c,i)=>{
     const s=document.createElement('span');
     s.textContent=c;
-    s.style.animationDelay=i*0.07+'s';
+    s.style.animationDelay=(i*0.07 + 1.75)+'s'; // Text appears AFTER hearts
     finalText.appendChild(s);
   });
 }
@@ -301,14 +308,3 @@ function showFinal(){
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
