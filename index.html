@@ -89,29 +89,25 @@ body{
 /* Taunt */
 #taunt{margin-top:20px;font-weight:600;color:#6e1f2c;text-align:center;min-height:28px;}
 
-/* Hearts */
+/* Hearts - SIMPLIFIED */
 .heart{
   position:fixed;
-  font-size:24px;
-  animation:explode 4s ease forwards;
+  font-size:28px;
+  animation: simpleFloat 3s ease forwards;
   z-index:1000;
   pointer-events: none;
 }
-@keyframes explode{
+@keyframes simpleFloat{
   0%{
-    transform:scale(0) translate(0,0);
-    opacity:1;
+    transform: translateY(0px) scale(0);
+    opacity:0;
   }
   20%{
-    transform:scale(1.2);
+    transform: translateY(-50px) scale(1.2);
     opacity:1;
-  }
-  80%{
-    opacity:1;
-    transform:scale(1.2);
   }
   100%{
-    transform:translate(var(--x),var(--y)) scale(1.5);
+    transform: translateY(-200px) scale(1);
     opacity:0;
   }
 }
@@ -145,7 +141,6 @@ body{
 </head>
 
 <body>
-<!-- NO STATIC HEARTS ON FIRST PAGE - Only floating ones -->
 
 <!-- ENVELOPE -->
 <div class="page active" id="envelopePage">
@@ -218,14 +213,15 @@ body{
 
 <script>
 let tries = 0;
-let heartInterval;
+let heartInterval = null;
 
 function startFloatingHearts() {
+  if (heartInterval) clearInterval(heartInterval);
   heartInterval = setInterval(() => {
     for(let i = 0; i < 3; i++) {
-      setTimeout(() => createFloatingHeart(), i * 300);
+      setTimeout(() => createFloatingHeart(), i * 200);
     }
-  }, 4000);
+  }, 3000);
 }
 
 function createFloatingHeart() {
@@ -242,12 +238,17 @@ function createFloatingHeart() {
 function openEnvelope(){
   document.querySelector('.envelope').classList.add('open');
   setTimeout(()=>showPage('page1'),1200);
-  startFloatingHearts();
 }
 
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  
+  // Start floating hearts IMMEDIATELY on page2
+  if(id === 'page2') {
+    startFloatingHearts();
+  }
+  
   if(id === 'valentinePage') resetValentine();
 }
 
@@ -277,34 +278,32 @@ function escapeNo(){
 }
 
 function yesClicked(){
-  // Create 50 hearts that fill the screen
-  for(let i=0;i<50;i++) {
-    setTimeout(() => createHeart(), i * 50);
+  // Create 25 gentle floating hearts
+  for(let i=0; i<25; i++) {
+    setTimeout(() => createSimpleHeart(), i * 100);
   }
-  // Wait 5 seconds (4s animation + 1s extra) before next page
-  setTimeout(()=>showPage('destinyPage'),5000);
+  // Wait 4 seconds before next page
+  setTimeout(()=>showPage('destinyPage'), 4000);
 }
 
-function createHeart(){
-  const h=document.createElement('div');
-  h.className='heart';
-  h.innerText='❤️';
-  h.style.left = (Math.random() * 100) + '%';
-  h.style.top = (Math.random() * 100) + '%';
-  h.style.setProperty('--x',(Math.random()*800-400)+'px');
-  h.style.setProperty('--y',(Math.random()*800-400)+'px');
+function createSimpleHeart(){
+  const h = document.createElement('div');
+  h.className = 'heart';
+  h.innerText = '💖';
+  h.style.left = Math.random() * 100 + '%';
+  h.style.top = Math.random() * 60 + 20 + '%';
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),4500);
+  setTimeout(()=>h.remove(), 3500);
 }
 
 function showFinal(){
   showPage('finalPage');
   const text="Happy Valentine's Day Baby ❤️ I Love You & I'm Always there for You 🫂";
-  finalText.innerHTML='';
+  finalText.innerHTML = '';
   [...text].forEach((c,i)=>{
-    const s=document.createElement('span');
-    s.textContent=c;
-    s.style.animationDelay=i*0.07+'s';
+    const s = document.createElement('span');
+    s.textContent = c;
+    s.style.animationDelay = i*0.07+'s';
     finalText.appendChild(s);
   });
   setTimeout(() => {
