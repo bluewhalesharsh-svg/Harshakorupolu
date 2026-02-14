@@ -237,16 +237,22 @@ function createFloatingHeart() {
 
 function openEnvelope(){
   document.querySelector('.envelope').classList.add('open');
-  setTimeout(()=>showPage('page1'),1200);
+  setTimeout(() => {
+    showPage('page1');
+    // START HEARTS 1 SECOND AFTER PAGE1 OPENS
+    setTimeout(() => {
+      startFloatingHearts();
+    }, 1000);
+  }, 1200);
 }
 
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   
-  // Start floating hearts IMMEDIATELY on page2
+  // Continue floating hearts on page2 and beyond
   if(id === 'page2') {
-    startFloatingHearts();
+    if (heartInterval) startFloatingHearts();
   }
   
   if(id === 'valentinePage') resetValentine();
