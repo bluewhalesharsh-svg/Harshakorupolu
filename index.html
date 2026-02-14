@@ -90,12 +90,30 @@ body{
 #taunt{margin-top:20px;font-weight:600;color:#6e1f2c;text-align:center;min-height:28px;}
 
 /* Hearts */
-.heart{position:fixed;font-size:24px;animation:explode 6s ease forwards;z-index:1000;}
+.heart{
+  position:fixed;
+  font-size:24px;
+  animation:explode 4s ease forwards;
+  z-index:1000;
+  pointer-events: none;
+}
 @keyframes explode{
-  0%{transform:scale(0);opacity:1}
-  20%{transform:scale(1.2);opacity:1}
-  80%{opacity:1}
-  100%{transform:translate(var(--x),var(--y)) scale(1.5);opacity:0;}
+  0%{
+    transform:scale(0) translate(0,0);
+    opacity:1;
+  }
+  20%{
+    transform:scale(1.2);
+    opacity:1;
+  }
+  80%{
+    opacity:1;
+    transform:scale(1.2);
+  }
+  100%{
+    transform:translate(var(--x),var(--y)) scale(1.5);
+    opacity:0;
+  }
 }
 
 /* Final */
@@ -127,12 +145,7 @@ body{
 </head>
 
 <body>
-<!-- Floating Hearts Background -->
-<div class="floating-heart" style="--left:0.1;--delay:0">💖</div>
-<div class="floating-heart" style="--left:0.3;--delay:1">💕</div>
-<div class="floating-heart" style="--left:0.5;--delay:2">💗</div>
-<div class="floating-heart" style="--left:0.7;--delay:3">💝</div>
-<div class="floating-heart" style="--left:0.9;--delay:4">💖</div>
+<!-- NO STATIC HEARTS ON FIRST PAGE - Only floating ones -->
 
 <!-- ENVELOPE -->
 <div class="page active" id="envelopePage">
@@ -264,21 +277,24 @@ function escapeNo(){
 }
 
 function yesClicked(){
-  for(let i=0;i<35;i++) createHeart();
-  // SLOWER hearts - 3 seconds delay before next page
-  setTimeout(()=>showPage('destinyPage'),3000);
+  // Create 50 hearts that fill the screen
+  for(let i=0;i<50;i++) {
+    setTimeout(() => createHeart(), i * 50);
+  }
+  // Wait 5 seconds (4s animation + 1s extra) before next page
+  setTimeout(()=>showPage('destinyPage'),5000);
 }
 
 function createHeart(){
   const h=document.createElement('div');
   h.className='heart';
   h.innerText='❤️';
-  h.style.left='50%';
-  h.style.top='50%';
-  h.style.setProperty('--x',(Math.random()*400-200)+'px');
-  h.style.setProperty('--y',(Math.random()*400-200)+'px');
+  h.style.left = (Math.random() * 100) + '%';
+  h.style.top = (Math.random() * 100) + '%';
+  h.style.setProperty('--x',(Math.random()*800-400)+'px');
+  h.style.setProperty('--y',(Math.random()*800-400)+'px');
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),2000);
+  setTimeout(()=>h.remove(),4500);
 }
 
 function showFinal(){
