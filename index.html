@@ -93,7 +93,7 @@ body{
 .heart{
   position:fixed;
   font-size:28px;
-  animation: simpleFloat 3s ease forwards;
+  animation: simpleFloat 1s ease forwards;
   z-index:1000;
   pointer-events: none;
 }
@@ -221,7 +221,7 @@ function startFloatingHearts() {
     for(let i = 0; i < 3; i++) {
       setTimeout(() => createFloatingHeart(), i * 200);
     }
-  }, 3000);
+  }, 1000);
 }
 
 function createFloatingHeart() {
@@ -299,7 +299,7 @@ function createSimpleHeart(){
   h.style.left = Math.random() * 100 + '%';
   h.style.top = Math.random() * 60 + 20 + '%';
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(), 3500);
+  setTimeout(()=>h.remove(), 1500);
 }
 
 function showFinal(){
@@ -321,3 +321,4 @@ function showFinal(){
 </script>
 </body>
 </html>
+
